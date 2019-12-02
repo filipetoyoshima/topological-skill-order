@@ -4,11 +4,24 @@ import ReactTooltip from 'react-tooltip';
 
 const Skill = props => {
     const skill = props.skill;
+    let color = 'black';
+
+    switch (props.status) {
+        case 'unlocked':
+            color = 'green';
+            break;
+        case 'unlockable':
+            color = 'blue';
+            break;
+        case 'locked':
+            color = 'gray';
+            break;
+    }
 
     return (
         <>
         <div
-            style={styles.container}
+            style={{...styles.container, background: color}}
             data-tip data-for={`tooltip-${skill.name}`}
             onClick={props.unlock}
         >
@@ -33,8 +46,8 @@ const Skill = props => {
         >
             Depends on:
             <ul>
-                {skill.dependsOn.map(value =>
-                    <li>
+                {skill.dependsOn.map((value, i) =>
+                    <li key={`li${i}`}>
                         {value}
                     </li>
                 )}

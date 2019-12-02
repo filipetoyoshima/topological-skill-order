@@ -66,7 +66,30 @@ class Main extends React.Component {
     }
 
     unlock(name) {
-        console.log(name);
+        let unlocked = this.state.unlocked;
+        let obj = this.state.skills.filter(skill => skill.name === name)[0];
+        if (!unlocked.includes(name) && this.checkStatus(obj) === 'unlockable') {
+            unlocked.push(name);
+            this.setState({
+                unlocked: unlocked
+            })
+        }
+    }
+
+    checkStatus(obj) {
+
+        console.log(obj)
+
+        if (this.state.unlocked.includes(obj.name)) {
+            return 'unlocked';
+        } else if (obj.dependsOn.length === 0) {
+            return 'unlockable';
+        }
+        let isAllDepenciesOk = obj.dependsOn.map(dependency => this.state.unlocked.includes(dependency)).reduce((a, b) => a && b);
+        if (isAllDepenciesOk) {
+            return 'unlockable';
+        }
+        return 'locked';
     }
 
     render() {
@@ -84,7 +107,8 @@ class Main extends React.Component {
                         key={`skill${i}`}
                         skill={skill}
                         unlock={() => this.unlock(skill.name)}
-                    />  
+                        status={this.checkStatus(skill)}
+                    />
                 )}
             </div>
         );
