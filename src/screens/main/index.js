@@ -5,8 +5,6 @@ class Main extends React.Component {
     state = {}
     
     render() {
-        console.log("called");
-        
         const obj = {
             name: 'Fireball',
             img: 'https://vignette.wikia.nocookie.net/super-spell-heroes/images/1/15/Icon_spell_fire_basic_overheatedFireball.jpg/revision/latest/scale-to-width-down/310?cb=20180906130713',

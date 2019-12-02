@@ -1,12 +1,16 @@
 import React from 'react';
 import styles from './style';
+import ReactTooltip from 'react-tooltip';
 
 const Skill = props => {
     const skill = props.skill;
-    console.log(props);
 
     return (
-        <div style={styles.container}>
+        <>
+        <div
+            style={styles.container}
+            data-tip data-for={`tooltip-${skill.name}`}
+        >
             <div style={styles.imgContainer}>
                 <img
                     style={styles.img}
@@ -20,6 +24,21 @@ const Skill = props => {
                 </span>
             </div>
         </div>
+        <ReactTooltip
+            id={`tooltip-${skill.name}`}
+            type='dark'
+            effect='solid'
+        >
+            Depends on:
+            <ul>
+                {skill.dependsOn.map(value =>
+                    <li>
+                        {value}
+                    </li>
+                )}
+            </ul>
+        </ReactTooltip>
+        </>
     )
 }
 
