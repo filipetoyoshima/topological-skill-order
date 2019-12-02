@@ -10,6 +10,7 @@ const Skill = props => {
         <div
             style={styles.container}
             data-tip data-for={`tooltip-${skill.name}`}
+            onClick={props.unlock}
         >
             <div style={styles.imgContainer}>
                 <img
@@ -28,6 +29,7 @@ const Skill = props => {
             id={`tooltip-${skill.name}`}
             type='dark'
             effect='solid'
+            place='right'
         >
             Depends on:
             <ul>
