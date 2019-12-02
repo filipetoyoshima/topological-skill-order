@@ -8,6 +8,10 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
+        // This is mocked data
+        // Only for testing
+        // Should be receive from somewhere
+        // Maybe an input screen
         var objs = [
             {
                 name: 'Flames',
@@ -16,13 +20,28 @@ class Main extends React.Component {
             },
             {
                 name: 'FireBall',
-                img: 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwirstTDsJbmAhXmILkGHTBbDN0QjRx6BAgBEAQ&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ffireball&psig=AOvVaw2BWD3Iaj_Dv6mrF21cx686&ust=1575355983308688',
+                img: 'https://cdn.hipwallpaper.com/i/42/92/R4BsvI.jpg',
                 dependsOn: ['Flames'],
             },
             {
                 name: 'FireBreath',
-                img: '',
+                img: 'https://ibucketlist.com/idea-images/824479de1bca08abb4a9b3719c347ab2fbdfd201/learn-to-firebreath--large.jpg',
                 dependsOn: ['Flames', 'FireBall'],
+            },
+            {
+                name: 'LightningBolt',
+                img: 'https://gamepedia.cursecdn.com/magicka_gamepedia/2/2d/Magick_thunderbolt.png',
+                dependsOn: [],
+            },
+            {
+                name: 'Thunder',
+                img: 'https://gamepedia.cursecdn.com/minionmasters_gamepedia_en/e/e8/LightningBolt.png',
+                dependsOn: ['LightningBolt'],
+            },
+            {
+                name: 'FireThunder',
+                img: 'https://cdna.artstation.com/p/assets/images/images/000/075/234/large/fire_and_thunder_by_amorphisss-d205b1a.jpg?1400771486',
+                dependsOn: ['Thunder', 'FireBreath'],
             },
         ]
 

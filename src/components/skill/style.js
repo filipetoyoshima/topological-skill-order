@@ -8,7 +8,7 @@ const style = {
         padding: '5px',
     },
     imgContainer: {
-        background: 'rgba(200, 200, 100, 0.8)',
+        background: 'rgba(255, 255, 255, 0.8)',
         width: '50px',
         height: '50px',
         borderRadius: '5px',
@@ -17,6 +17,8 @@ const style = {
     },
     img: {
         width: '50px',
+        height: '50px',
+        objectFit: 'cover',
     },
     textContainer: {
         float: 'left',
