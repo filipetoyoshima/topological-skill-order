@@ -66,7 +66,12 @@ class Main extends React.Component {
             {
                 name: 'Infiltration',
                 img: 'https://gamepedia.cursecdn.com/minionmasters_gamepedia_en/thumb/6/63/Infiltrators.jpg/216px-Infiltrators.jpg?version=093b92c1edd70ce7c6a0ba1de70ab001',
-                dependsOn: ['Hypnotize','FireBreath','FireBall','Flames'],
+                dependsOn: ['Hypnotize', 'FireBreath', 'FireBall', 'Flames'],
+            },
+            {
+                name: 'Sun Burn ',
+                img: 'https://gamepedia.cursecdn.com/minionmasters_gamepedia_en/thumb/3/3a/SunBurn.jpg/216px-SunBurn.jpg?version=7bb12993c6811229c9c2d3c365a1f6e8',
+                dependsOn: ['Flames'],
             },
         ]
 
@@ -133,6 +138,7 @@ class Main extends React.Component {
         if (isAllDepenciesOk) {
             return 'unlockable';
         }
+
         return 'locked';
     }
 
@@ -164,6 +170,12 @@ class Main extends React.Component {
         this.setState({
             skills: ordered
         })
+
+        this.setState({
+            name: "",
+            img: "",
+            depends: ""
+        })
     }
 
     render() {
@@ -175,9 +187,9 @@ class Main extends React.Component {
         }
 
         return (
-            <div style={{ display: 'flex',marginLeft: "100px" }}>
+            <div style={{ display: 'flex', marginLeft: "100px" }}>
                 <h1>Skills:</h1>
-                <div style={{ display: 'flex', alignItems: 'start', justifyContent: 'center', flexDirection: "column", marginLeft: '100px' }}>
+                <div style={{ display: 'flex', alignItems: 'start', justifyContent: 'center', flexDirection: "column", marginLeft: '100px'}}>
                     {this.state.skills.map((skill, i) =>
                         <Skill
                             key={`skill${i}`}
@@ -187,26 +199,29 @@ class Main extends React.Component {
                         />
                     )}
                 </div>
-                <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', margin: '250px'}}>
+                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', margin: '250px', backgroundColor: 'gray', padding: "30px", borderRadius: '20px', paddingBottom: '10px' }}>
                     <textarea
                         type="text"
                         rows={1}
-                        value={this.state.skill}
+                        value={this.state.name}
                         onChange={this.handleName}
+                        placeholder="Name"
                     />
                     <textarea
                         type="text"
                         rows={1}
-                        value={this.state.skill}
+                        value={this.state.img}
                         onChange={this.handleImg}
+                        placeholder="Image"
                     />
                     <textarea
                         type="text"
                         rows={3}
-                        value={this.state.skill}
+                        value={this.state.depends}
                         onChange={this.handleDepends}
+                        placeholder="Dependency"
                     />
-                    <button onClick={this.handleSubmit} >Ok</button>
+                    <button onClick={this.handleSubmit} style={{margin: '20px'}}>Ok</button>
                 </div>
             </div>
         );
